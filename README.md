@@ -33,8 +33,30 @@ Processor is a main class that execute processes from queue and store resumable 
 1) We can start execute coroutine function before we find first suspend point
 2) After we find that point we return program control to main function that call coroutine and check whether coroutine is can continue execution or not. If not we delete coroutine from queue and delete it from memory stack otherwise we check process queue again and take first process from queue than continue process, if it previos process or start new. 
 
-We can repeat this 2 parts until process queue not empty
+We can repeat this 2 parts until process queue not empty. 
 
+ Example:
+ 
+    void Execute() {
+        std::map <int, struct resumable*> mp;
+        while (!process_queue.empty()) {
+            Process p = process_queue.top();
+            if (mp.find(p.getID()) == mp.end()) {
+                auto canContinue = p.StartExecution();
+                mp[p.getID()] = &canContinue;
+            }
+            else {
+                auto canContinue = mp[p.getID()]->resume();
+                if (!canContinue) {
+                    mp.erase(p.getID());
+                    process_queue.pop();
+                }
+            }
+
+            
+        }
+      
+      
 Process class mostly created for ordering in processor queue
 
 struct resumable is a special resumable object that store coroutine in struct promise_type so we can create coroutine method that returns resumable struct
