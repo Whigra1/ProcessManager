@@ -57,9 +57,22 @@ We can repeat this 2 parts until process queue not empty.
         }
       
       
-Process class mostly created for ordering in processor queue
+To run this program you can simply create Processor class and fill queue with processes
 
-struct resumable is a special resumable object that store coroutine in struct promise_type so we can create coroutine method that returns resumable struct
+ Example:
+
+    int main() {
+      Processor processor = Processor();
+      processor.AddToQueue(Process(3, 1));
+      processor.AddToQueue(Process(2, 2));
+      processor.AddToQueue(Process(1, 3));
+      processor.AddToQueue(Process(4, 4));
+      processor.AddToQueue(Process(5, 5));
+      processor.AddToQueue(Process(6, 6));
+      processor.Execute();
+      return 0;
+  }
+ 
 
  Average arival time plot:    
 ![alt text](https://github.com/Whigra1/ProcessManager/blob/master/photos/plot1.png)
