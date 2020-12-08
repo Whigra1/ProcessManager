@@ -45,5 +45,5 @@ struct resumable is a special resumable object that store coroutine in struct pr
 Intencity plot:    
 ![alt text](https://github.com/Whigra1/ProcessManager/blob/master/photos/plot2.png)
 
- Idle plot:    
+ Priority plot:    
 ![alt text](https://github.com/Whigra1/ProcessManager/blob/master/photos/plot3.png)
