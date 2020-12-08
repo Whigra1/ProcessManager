@@ -30,4 +30,4 @@ Compiler automaticaly refactor code to something like this.
     final_suspend:
       co_await promise.final_suspend();
      
-![alt text](https://github.com/Whigra1/ProcessManager/tree/master/photos/plot1.png?raw=true)
+![alt text](https://github.com/Whigra1/ProcessManager/blob/master/photos/plot1.png)
